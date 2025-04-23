@@ -1,3 +1,7 @@
+import Models.Book;
+import Views.ShowConsole;
+import Controllers.MetodosControles;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -33,6 +37,29 @@ public class App {
                 new Book("Deep Learning", 2016),
                 new Book("The Elements of Statistical Learning", 2001)
         };
+        ShowConsole sc = new ShowConsole();
+        MetodosControles mc = new MetodosControles();
+        sc.imprimirMensaje("---------------------El arreglo original es---------------------");
+        sc.imprimirArreglo(books);
+        sc.imprimirMensaje("\n---------------------El arreglo ordenado descendentemente es---------------------");
+        mc.sortByName(books);
+        sc.imprimirArreglo(books);
 
+        Book libroEncontrado = mc.searchByName(books, "Python the best book");
+        sc.imprimirMensaje("\nEl libro que se busca es Python the best book");
+        if(libroEncontrado == null){
+            sc.imprimirMensaje("No hay ningun libro con ese nombre");
+        }else{
+            sc.imprimirMensaje("El libro con ese nombre es: ");
+            sc.imprimirMensaje(libroEncontrado.toString());
+        }
+        Book libroEncontrado1 = mc.searchByName(books, "Deep Learning");
+        sc.imprimirMensaje("\nEl libro que se busca es Deep Learning");
+        if(libroEncontrado1 == null){
+            sc.imprimirMensaje("No hay ningun libro con ese nombre");
+        }else{
+            sc.imprimirMensaje("El libro con ese nombre es: ");
+            sc.imprimirMensaje(libroEncontrado1.toString());
+        }
     }
 }
